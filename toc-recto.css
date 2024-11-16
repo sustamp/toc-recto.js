@@ -1,0 +1,168 @@
+@charset "utf-8";
+
+/* 定义toc侧边栏样式 */
+.su-toc-sidebar{
+    position: fixed;
+    top: 20px;
+    /* 默认宽度，同时也是最小宽度 */
+    width: 17%;
+    /* 初始位置在隐藏右侧外部(需要同width) */
+    right: -17%;
+    /* 高度 */
+    height: calc(100vh - 40px);
+    background-color: #fff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1002;
+    /* 溢出时显示滚动条 */
+    overflow-y: auto;
+    
+    border-radius: 5px;
+}
+.su-toc-sidebar.open {
+    /* 显示时将位置从右侧边缘开始移除来 */
+    right: 0;
+}
+.su-toc-sidebar button {
+    background-color: transparent;
+    border: solid 1px #ddd;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    border-radius: 5px;
+}
+
+.su-toc-header{
+    padding: 8px;
+    /* padding: 5px 0px; */
+    border-bottom: 1px solid #3d3d3d;
+    /* box-shadow: 0 .35rem .25rem rgba(0,0,0,.075)!important; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* 让header在当前区域置顶 */
+    position: sticky;
+    top:0;
+    background-color: #fff;
+}
+
+.su-toc-header h3 {
+    margin: 0;
+    font-size: 18px;
+    border-bottom: none;
+}
+
+.su-toc-conent{
+    margin: 5px 10px;
+    /* padding: 10px 5px; */
+    font-size: 1em;
+    line-height: 30px;
+}
+.su-toc-conent ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.su-toc-item{
+    word-wrap: break-word;
+}
+
+.su-toc-item *{ 
+    text-decoration: none;
+    color: #2c2b2b;
+    display: block;
+}
+
+.su-toc-item a:hover{
+    color: #007bff;
+    background-color: #eee;
+}
+
+/* 导读侧边栏样式:整个窗口垂直居中 */
+.su-toc-menu{
+    position: fixed;
+    /* 距离右侧边缘10px */
+    right: 10px;
+    /* 垂直居中 */
+    top: 50%;
+    /* 垂直居中调整 */
+    transform: translateY(-50%); 
+    
+    cursor: pointer;
+    z-index: 1001;
+    /* background-color: #007bff; */
+    /* color: #fff; */
+    /* border-radius: 5px; */
+    
+    /* max-width: 10vh; */
+    word-break: break-all;
+    /* 垂直布局，横向元素居中 */
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    
+}
+/* 导航边框栏中按钮样式 */
+.su-toc-button{
+    cursor: pointer;
+    /* 背景蓝色，字体白色 */
+    background-color: #007bff;   
+    color: #fff;
+    /* 边框白色 */
+    border: solid 1px #007bff;
+    
+    /* 增加内边距，外边距为0 */
+    padding: 1em 1em;
+    font-size: 0.7em;
+    margin: 1px 0;
+    
+    /*  */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.su-toc-button:hover {
+    background-color: #0056b3;
+}
+.su-toc-button span{
+    /* 每个字符单独一行 */
+    display: block;
+}
+
+
+/* 定义遮罩层 */
+.su-toc-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+.su-toc-overlay.show{
+    display: block;
+}
+
+
+/* 当屏幕宽度缩小到768px时，导读栏的宽度变化 */
+@media(max-width: 768px){
+    .su-toc-sidebar{
+        right: -60%;
+        width: 60%;
+    }
+}
+/* 当屏幕宽度在768px到1024px之间，导读栏的宽度变化 */
+@media(min-width: 768px) and (max-width: 1600px){
+    .su-toc-sidebar{
+        right: -30%;
+        width: 30%;
+    }
+    /* .su-toc-button{
+        font-size: 1em;
+    } */
+}
