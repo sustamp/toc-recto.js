@@ -144,4 +144,9 @@ toc.generateTOC();
 
 ```
 
+
 现在，你可以在浏览器刷新页面，查看效果了。
+
+<img src="https://sustamp.github.io/assets/pictures/toc-recto/toc-recto1.jpg" alt="toc-recto.js效果图1">
+
+<img src="https://sustamp.github.io/assets/pictures/toc-recto/toc-recto2.jpg" alt="toc-recto.js效果图2">
