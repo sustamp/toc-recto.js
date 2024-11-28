@@ -30,6 +30,9 @@ function TocRecto(config){
         //是否优化标题id，默认为true。
         headingOptimal: {
             defaultValue: true
+        },
+        home:{
+            defaultValue: '#'
         }
     };
 
@@ -81,18 +84,36 @@ TocRecto.prototype.createTOCElement = function() {
     const tocMenu = document.createElement('div');
     tocMenu.className = _tocMenu;
     tocMenu.id = _tocMenu;
+    // tocMenu.innerHTML = `
+    //     <button class="su-toc-button" onclick="sucScrollToTop()">
+    //         <span>回</span>
+    //         <span>到</span>
+    //         <span>顶</span>
+    //         <span>部</span>
+    //     </button>
+    //     <button class="su-toc-button" onclick="sucToggleSidebar()">
+    //         <span>导</span>
+    //         <span>读</span>
+    //         <span>目</span>
+    //         <span>录</span>
+    //     </button>
+    // `;
     tocMenu.innerHTML = `
         <button class="su-toc-button" onclick="sucScrollToTop()">
-            <span>回</span>
-            <span>到</span>
-            <span>顶</span>
-            <span>部</span>
+            <span class="fa--chevron-up"></span>
         </button>
         <button class="su-toc-button" onclick="sucToggleSidebar()">
+            <!-- <span class="fa--list-ul"></span> -->
             <span>导</span>
             <span>读</span>
             <span>目</span>
             <span>录</span>
+        </button>
+        <button class="su-toc-button" onclick="sucGo2Href('${this.home}')">
+            <span class="fa--house-chimney"></span>
+        </button>
+        <button class="su-toc-button" onclick="sucScrollToButtom()">
+            <span class="fa--chevron-down"></span>
         </button>
     `;
 
@@ -232,6 +253,16 @@ function sucHideSidebar() {
 }
 function sucScrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function sucScrollToButtom(){
+    // document.documentElement.scrollHeight滚动到文档的总高度
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+}
+
+function sucGo2Href(href){
+    href = href ? href : '#';
+    window.location.href = href;
 }
 
 // 监听toc区域，当点击空白处或a标签时，隐藏toc栏
